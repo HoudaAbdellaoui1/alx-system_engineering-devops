@@ -1,2 +1,2 @@
 #!/bin/bash
-SCRIPT_PATH=$(dirname $(realpath -s $0))
+echo pwd
