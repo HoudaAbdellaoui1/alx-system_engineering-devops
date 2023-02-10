@@ -1,2 +1,10 @@
 #!/bin/bash
-echo $(ls)
+# Get the contents of the current directory
+contents=$(ls -1 .)
+
+# Loop through each item in the contents list
+for item in $contents
+do
+	  # Display the item name
+	    echo $item
+    done
