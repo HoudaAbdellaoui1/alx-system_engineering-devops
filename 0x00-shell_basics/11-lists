@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Function to list files in long format
+list_files() {
+    directory=$1
+    for file in "$directory"/* "$directory"/.[!.]*; do
+        if [[ -f "$file" ]]; then
+            file_info=$(stat -c "Name: %n\tSize: %s bytes\tLast modified: %y" "$file")
+            echo "$file_info"
+        fi
+    done
+}
+
+# Get the current directory
+current_dir=$(pwd)
+
+# List files in the current directory
+echo "Current directory:"
+list_files "$current_dir"
+
+# Get the parent directory
+parent_dir=$(dirname "$current_dir")
+
+# List files in the parent directory
+echo -e "\nParent directory:"
+list_files "$parent_dir"
+
+# List files in the /boot directory
+boot_dir="/boot"
+echo -e "\n/boot directory:"
+list_files "$boot_dir"
+
