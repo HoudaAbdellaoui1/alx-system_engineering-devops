@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lt | awk '{print $NF}' | grep -v '^d' | head -n 10
+ls -t | head -n 10
