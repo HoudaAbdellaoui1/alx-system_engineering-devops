@@ -1,2 +1,2 @@
 #!/bin/bash
-for c in {a..z}{a..z}; do [ "$c" != "oo" ] && echo "$c"; done
+echo {a..z}{a..z} | tr ' ' '\n' | grep -v 'oo'
