@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #The content of the current directory
 for file in *; do
-    if [ -f "$file" ] && [ ! -h "$file" ] && [[ $file == *-* ]]; then
-        # Extract the part after the first dash
+    if [ -f "$file" ] && [ ! -h "$file" ] && [[ $file == *-* ]];
+    then
         name_part=$(echo "$file" | cut -d'-' -f2-)
         echo "$name_part"
     fi
