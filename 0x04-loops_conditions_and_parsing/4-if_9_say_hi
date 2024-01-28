@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Display Best School then Hi
+for i in {1..10}
+do
+    if [[ i -eq 9 ]]
+    then
+        echo "Best School"
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+done
