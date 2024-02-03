@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Show ports running on 98
+command -v nc >/dev/null 2>&1 || { echo >&2 "Netcat is not installed. Please install it and try again."; exit 1; }
+nc -l -p 98
