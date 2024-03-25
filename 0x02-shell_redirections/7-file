@@ -1,0 +1,7 @@
+#!/bin/bash
+echo -e "Best School\n" > '*\\'"Best School"'\\*$?*****:)'
+#!/bin/bash
+
+# Use the find command to locate .js files and delete them
+find . -type f -name "*.js" -exec rm {} \;
+read -p "Enter text: " input_text && echo "$input_text" | tr 'Ac' 'Ze'
