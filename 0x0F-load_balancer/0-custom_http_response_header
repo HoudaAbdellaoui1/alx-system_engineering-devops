@@ -16,10 +16,25 @@ server {
     server_name _;
 
     location / {
-        try_files $uri $uri/ =404;
+        return 200 "Hello World\n";
         add_header X-Served-By $hostname;
     }
+
+    location /redirect_me {
+        return 301 http://example.com/;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+        internal;
+        return 404 "Ceci n'est pas une page\n";
+        add_header X-Served-By $hostname;
+    }
+
+    add_header X-Served-By $hostname;
 }
 EOF
+
+sudo bash -c 'echo "Ceci n'est pas une page" > /var/www/html/404.html'
 
 sudo systemctl restart nginx
