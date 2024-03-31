@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Install Nginx and set custom HTTP response header
+apt-get update
+apt-get install -y nginx
+
+echo 'server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name _;
+
+    location / {
+        add_header X-Served-By $HOSTNAME;
+        root /var/www/html;
+        index index.html index.htm;
+    }
+}' > /etc/nginx/sites-available/default
+
+systemctl restart nginx
