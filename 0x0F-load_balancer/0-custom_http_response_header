@@ -16,4 +16,4 @@ echo 'server {
     }
 }' > /etc/nginx/sites-available/default
 
-systemctl restart nginx
+sudo service nginx start
