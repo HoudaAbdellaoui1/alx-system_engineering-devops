@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Configure server to run Nginx
+
 apt update
 apt install -y nginx
 sudo service nginx start
