@@ -19,5 +19,5 @@ else
 fi
 
 for sub in "${subdomains[@]}"; do
-    display_info $domain $sub
+    display_info $1 $sub
 done
