@@ -3,10 +3,15 @@
 display_info() {
     local domain=$1
     local subdomain=$2
-    local record_type=$(dig +short "${2}"."$1" | awk '{print toupper($1)}')
-    local destination=$(dig +short "${2}"."$1")
+    local record_type=""
+    local destination=""
 
-    echo "The subdomain $subdomain is a $record_type record and points to $destination"
+    if [ -n "$subdomain" ]; then
+        record_type=$(dig +short $subdomain.$domain | awk '{print toupper($1)}')
+        destination=$(dig +short $subdomain.$domain)
+    fi
+
+    echo "The subdomain $2 is a $record_type record and points to $destination"
 }
 
 domain=$1
