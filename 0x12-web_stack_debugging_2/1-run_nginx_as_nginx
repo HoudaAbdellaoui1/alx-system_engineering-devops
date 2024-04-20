@@ -7,5 +7,5 @@ sudo chmod 644 /etc/nginx/nginx.conf
 # change user
 sudo sed -i '1s/.*/user nginx;/' /etc/nginx/nginx.conf
 # update configuration to listen on port 8080
-sudo -i 's/80/8080/' /etc/nginx/sites-enabled/default
+sudo sed -i 's/80/8080/' /etc/nginx/sites-enabled/default
 sudo -u nginx service nginx start
