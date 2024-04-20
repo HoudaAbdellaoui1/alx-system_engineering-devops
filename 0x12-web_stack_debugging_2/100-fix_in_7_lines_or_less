@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# change user in nginx user configuration
+apt-get install nginx -y
+sudo chmod 644 /etc/nginx/nginx.conf
+sudo sed -i 's/user\s\+\w\+/user nginx/' /etc/nginx/nginx.conf
+sudo sed -i 's/80/8080/g' /etc/nginx/sites-enabled/default
+sudo -u nginx service nginx start
