@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # change user in nginx user configuration
 # stop Nginx
-ngix -s stop
+nginx -s stop
 # change user
 sed -i 's/user\s\+\w\+/user nginx/' /etc/nginx/nginx.conf
 # update configuration to listen on port 8080
