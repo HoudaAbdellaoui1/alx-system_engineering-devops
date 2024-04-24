@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ Gather data from an API """
 
-import csv
 import json
 import requests
 import sys
@@ -23,19 +22,6 @@ if __name__ == '__main__':
         )
     todosResponse = requests.get(getTodosUrl, params=params)
     todos_data = todosResponse.json()
-    result = [{
-        "userId": sys.argv[1],
-        "username": userName,
-        "status": item["completed"],
-        "task_title": item["title"]
-        }
-        for item in todos_data
-    ]
-    formatted_data = {sys.argv[1]: [
-        {"task": item["task_title"], "completed": item["status"],
-            "username": userName}
-        for item in result
-    ]}
     filename = f"{sys.argv[1]}.json"
     with open(filename, "w") as outfile:
         json.dump({sys.argv[1]: [{
