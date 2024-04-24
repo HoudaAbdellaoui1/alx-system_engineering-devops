@@ -28,4 +28,4 @@ if __name__ == '__main__':
             "task": t.get('title'),
             "completed": t.get('completed'),
             "username": userName
-        } for t in todos_data]}, jsonfile)
+        } for t in todos_data]}, jsonfile, indent=4)
