@@ -25,4 +25,4 @@ if __name__ == '__main__':
     print("Employee {} is done with tasks({}/{}):".format(userName, completed_counter, len(todos_data)))
     for t in todos_data:
         if t['completed']:
-            print(f'\t{t["title"]}')
+            print(f'\t {t["title"]}')
