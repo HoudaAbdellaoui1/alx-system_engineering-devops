@@ -22,13 +22,14 @@ if __name__ == '__main__':
         )
     todosResponse = requests.get(getTodosUrl, params=params)
     todos_data = todosResponse.json()
-    result = [{
+    result = [
+        {
         "userId": sys.argv[1],
         "username": user_data.get('name'),
         "status": item["completed"],
         "task_title": item["title"]
-    }
-    for item in todos_data if item["completed"]
+        }
+        for item in todos_data if item["completed"]
     ]
     filename = f"{sys.argv[1]}.csv"
     with open(filename, mode="w", newline='') as file:
