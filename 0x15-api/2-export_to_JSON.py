@@ -23,9 +23,9 @@ if __name__ == '__main__':
     todosResponse = requests.get(getTodosUrl, params=params)
     todos_data = todosResponse.json()
     filename = f"{sys.argv[1]}.json"
-    with open(filename, "w") as outfile:
+    with open(filename, mode="w") as jsonfile:
         json.dump({sys.argv[1]: [{
             "task": t.get('title'),
             "completed": t.get('completed'),
             'username': userName
-        } for t in todos_data]}, outfile)
+        } for t in todos_data]}, jsonfile)
