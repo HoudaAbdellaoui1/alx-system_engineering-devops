@@ -23,16 +23,15 @@ if __name__ == '__main__':
     todosResponse = requests.get(getTodosUrl, params=params)
     todos_data = todosResponse.json()
     result = [{
-        "userId": user_data.get('id'),
+        "userId": sys.argv[1],
         "username": user_data.get('name'),
         "status": item["completed"],
         "task_title": item["title"]
     }
     for item in todos_data if item["completed"]
     ]
-    filename = f"{user_data.get('id')}.csv"
+    filename = f"{sys.argv[1]}.csv"
     with open(filename, mode="w", newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         for item in result:
             writer.writerow([item["userId"], item["username"], item["status"], item["task_title"]])
-    print(f"CSV file '{filename}' has been created successfully.")
