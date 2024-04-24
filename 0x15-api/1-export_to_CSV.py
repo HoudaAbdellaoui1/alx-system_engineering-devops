@@ -28,7 +28,7 @@ if __name__ == '__main__':
         "status": item["completed"],
         "task_title": item["title"]
         }
-        for item in todos_data if item["completed"]
+        for item in todos_data
     ]
     filename = f"{sys.argv[1]}.csv"
     with open(filename, mode="w", newline='') as file:
