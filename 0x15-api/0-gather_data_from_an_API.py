@@ -7,7 +7,7 @@ import sys
 if __name__ == '__main__':
     # Find user by employee id
     getUsersUrl = (
-        f'https://jsonplaceholder.typicode.com/users/{sys.argv[1]}'
+        f'https://jsonplaceholder.typicode.com/users/{int(sys.argv[1])}'
     )
     userResponse = requests.get(getUsersUrl)
     if (userResponse.status_code == 200):
@@ -15,7 +15,7 @@ if __name__ == '__main__':
         userName = userResponse.json().get('name')
 
     # Find todos by userId
-    params = {'userId': sys.argv[1]}
+    params = {'userId': int(sys.argv[1])}
     getTodosUrl = (
             f'https://jsonplaceholder.typicode.com/todos'
         )
