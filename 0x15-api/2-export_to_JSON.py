@@ -36,7 +36,12 @@ if __name__ == '__main__':
             "username": userName}
         for item in result
     ]}
-    formatted_json = json.dumps(formatted_data, ensure_ascii=False)
+    # formatted_json = json.dumps(formatted_data, ensure_ascii=False)
     filename = f"{sys.argv[1]}.json"
     with open(filename, "w") as outfile:
-        outfile.write(formatted_json)
+        json.dump({sys.argv[1]: [{
+            "task": t.get('title'),
+            "completed": t.get('completed'),
+            'username': userName
+        } for t in todos_data]}, outfile)
+        # outfile.write(formatted_json)
