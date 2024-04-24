@@ -37,6 +37,6 @@ if __name__ == '__main__':
         for item in result
     ]}
     formatted_json = json.dumps(formatted_data, ensure_ascii=False)
-    filename = f"{sys.argv[1]}.csv"
+    filename = f"{sys.argv[1]}.json"
     with open(filename, "w") as outfile:
         outfile.write(formatted_json)
