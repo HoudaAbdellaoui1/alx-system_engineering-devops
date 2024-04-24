@@ -2,6 +2,7 @@
 """ Gather data from an API """
 
 import csv
+import json
 import requests
 import sys
 
@@ -30,9 +31,10 @@ if __name__ == '__main__':
         }
         for item in todos_data
     ]
-    filename = f"{sys.argv[1]}.csv"
-    with open(filename, mode="w", newline='') as file:
-        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
-        for item in result:
-            writer.writerow([item["userId"], item["username"],
-                             item["status"], item["task_title"]])
+    formatted_data = {sys.argv[1]: [
+        {"task": item["task_title"], "completed": item["status"],
+            "username": userName}
+        for item in result
+    ]}
+    formatted_json = json.dumps(formatted_data, ensure_ascii=False)
+    print(formatted_json)
