@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # change user in nginx user configuration
+apt-get update -y
 apt-get install nginx -y
 sudo chmod 644 /etc/nginx/nginx.conf
 sudo sed -i 's/user\s\+\w\+/user nginx/' /etc/nginx/nginx.conf
