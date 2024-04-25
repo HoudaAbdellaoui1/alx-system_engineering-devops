@@ -23,7 +23,7 @@ if __name__ == '__main__':
     todos_data = todosResponse.json()
     completed_counter = sum(1 for t in todos_data if t['completed'])
     print("Employee {} is done with tasks({}/{}):"
-            .format(userName, completed_counter, len(todos_data)))
+          .format(userName, completed_counter, len(todos_data)))
     for t in todos_data:
         if t['completed']:
             print(f'\t {t["title"]}')
