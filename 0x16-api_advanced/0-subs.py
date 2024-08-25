@@ -4,6 +4,7 @@
 import requests
 import sys
 
+
 def number_of_subscribers(subreddit):
     """
     Returns the number of subscribers for a given subreddit.
@@ -11,10 +12,15 @@ def number_of_subscribers(subreddit):
     """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {'User-Agent': 'Mozilla/5.0'}
-    getSubredditDataUrl = (f'https://www.reddit.com/r/{subreddit}/about.json')
-    subredditData = requests.get(getSubredditDataUrl, headers=headers, timeout=10)
-    if subredditData.status_code == 200:
-        subscribersCount = subredditData.json()['data']['subscribers']
-        return subscribersCount
-    else:
+    url = (f'https://www.reddit.com/r/{subreddit}/about.json')
+    try:
+        subs = requests.get(url, headers=headers, timeout=10,
+                            allow_redirects=False)
+        if subs.status_code == 200:
+            subscribersCount = subs.json()['data']['subscribers']
+            return subscribersCount
+        else:
+            return 0
+    except requests.RequestException:
+        # Return 0 if there's an error (e.g., network issue, invalid subreddit)
         return 0
