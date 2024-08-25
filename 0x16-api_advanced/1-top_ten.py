@@ -14,8 +14,8 @@ def top_ten(subreddit):
     params = {'limit': 10}
 
     try:
-        subredditData = requests.get(url, headers=headers,params=params,
-                                      allow_redirects=False)
+        subredditData = requests.get(url, headers=headers, params=params,
+                                     allow_redirects=False)
         if subredditData.status_code == 200:
             data = subredditData.json()
             posts = data['data']['children']
