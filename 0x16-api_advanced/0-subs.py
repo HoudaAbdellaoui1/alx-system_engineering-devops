@@ -2,7 +2,7 @@
 """ Gather subscribers count by subreddit from REDDIT API """
 
 import requests
-import sys
+
 
 
 def number_of_subscribers(subreddit):
@@ -10,17 +10,16 @@ def number_of_subscribers(subreddit):
     Returns the number of subscribers for a given subreddit.
     If the subreddit is invalid, returns 0.
     """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'Mozilla/5.0'}
-    url = (f'https://www.reddit.com/r/{subreddit}/about.json')
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
+    }
     try:
-        subs = requests.get(url, headers=headers, timeout=10,
-                            allow_redirects=False)
+        subs = requests.get(url, headers=headers, allow_redirects=False)
         if subs.status_code == 200:
-            subscribersCount = subs.json()['data']['subscribers']
-            return subscribersCount
+            subscribersCount = subs.json().get('data')
+            return subscribersCount.get('subscribers')
         else:
             return 0
     except requests.RequestException:
-        # Return 0 if there's an error (e.g., network issue, invalid subreddit)
         return 0
